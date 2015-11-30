@@ -1,0 +1,24 @@
+﻿La génération a démarré 30/11/2015 18:58:12.
+     1>Projet "M:\Game\KB's Warriors\KB's Warriors\KB's Warriors.vcxproj" sur le nœud 2 (build cible(s)).
+     1>PrepareForBuild:
+         Création du répertoire "M:\Game\KB's Warriors\Release\".
+       InitializeBuildStatus:
+         Création de "Release\KB's Warriors.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"M:\LibCPP\SFML-2.3.2\include" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\KB's Warriors\KB's Warriors\main.cpp"
+         main.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"M:\Game\KB's Warriors\Release\KB's Warriors.exe" /NOLOGO /LIBPATH:"M:\LibCPP\SFML-2.3.2\lib" "sfml-graphics.lib" "sfml-window.lib" "sfml-system.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\KB's Warriors.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"M:\Game\KB's Warriors\Release\KB's Warriors.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"M:\Game\KB's Warriors\Release\KB's Warriors.lib" /MACHINE:X86 Release\main.obj
+         Génération de code en cours
+         Fin de la génération du code
+         KB's Warriors.vcxproj -> M:\Game\KB's Warriors\Release\KB's Warriors.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"M:\Game\KB's Warriors\Release\KB's Warriors.exe;#1" /manifest "Release\KB's Warriors.exe.intermediate.manifest"
+       FinalizeBuildStatus:
+         Suppression du fichier "Release\KB's Warriors.unsuccessfulbuild".
+         Mise à jour de l'horodatage "Release\KB's Warriors.lastbuildstate".
+     1>Génération du projet "M:\Game\KB's Warriors\KB's Warriors\KB's Warriors.vcxproj" terminée (build cible(s)).
+
+La génération a réussi.
+
+Temps écoulé 00:00:01.30
