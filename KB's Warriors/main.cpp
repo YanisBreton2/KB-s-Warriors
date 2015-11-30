@@ -1,18 +1,13 @@
 #include <iostream>
 #include <SFML\Graphics.hpp>
-
+#include "menu.h"
 
 int	main()
 {
 	sf::RenderWindow window(sf::VideoMode(1400, 800), "Runner");
 	while (window.isOpen())
 	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
+		main_menu(window);
 	}
 	return (0);
 }
