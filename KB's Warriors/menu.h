@@ -4,6 +4,7 @@
 # include <SFML\Graphics.hpp>
 # include "MyText.h"
 # include "joystick.h"
+# include "BattleEngine.h"
 
 # define	MAIN_MENU_CHOICE_COUNT (4)
 # define	INTERLINE (70)

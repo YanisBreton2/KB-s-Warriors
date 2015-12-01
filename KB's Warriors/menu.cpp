@@ -2,6 +2,22 @@
 
 using namespace	sf;
 
+void	makeChoice(int choice, sf::RenderWindow &window, BattleEngine &be)
+{
+	switch (choice)
+	{
+	case 0:
+		be.run(window);
+		break;
+	case 3:
+		window.close();
+		break;
+	default:
+		printf("%d\n", choice);
+		break;
+	}
+}
+
 void	main_menu(sf::RenderWindow &window)
 {
 	MyText	title("KB's Fighter", "../Ressources/Font/hominis.ttf", sf::Vector2f(700, 90), 130);
@@ -20,6 +36,7 @@ void	main_menu(sf::RenderWindow &window)
 	Event	event;
 	int		choice = 0;
 	Clock	clock;
+	BattleEngine be;
 	while (window.isOpen())
 	{
 		while (window.pollEvent(event))
@@ -46,15 +63,7 @@ void	main_menu(sf::RenderWindow &window)
 			{
 				if (event.joystickButton.button == JOYSTICK_A)
 				{
-					switch (choice)
-					{
-					case 3:
-						window.close();
-						break;
-					default:
-						printf("%d\n", choice);
-						break;
-					}
+					makeChoice(choice, window, be);
 				}
 			}
 			else if (event.type == Event::Closed)
@@ -73,15 +82,7 @@ void	main_menu(sf::RenderWindow &window)
 				}
 				else if (event.key.code == Keyboard::Return)
 				{
-					switch (choice)
-					{
-					case 3:
-						window.close();
-						break;
-					default:
-						printf("%d\n", choice);
-						break;
-					}
+					makeChoice(choice, window, be);
 				}
 			}
 		}
