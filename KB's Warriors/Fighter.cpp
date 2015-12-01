@@ -54,7 +54,6 @@ void		Fighter::doMovement(sf::View limit)
 		float limit_right = limit.getCenter().x + limit.getSize().x / 2.0f;
 		float sprite_left = m_sprite.getGlobalBounds().left;
 		float sprite_right = m_sprite.getGlobalBounds().left + m_sprite.getLocalBounds().width;
-		printf("Limit : %f %f\t\tBounds : %f %f\n", limit_left, limit_right, sprite_left, sprite_right);
 		if (m_moving == RIGHT)
 		{
 			if (sprite_right + SPEED < limit_right)
