@@ -67,7 +67,7 @@ void		BattleEngine::event_handler(sf::Event event)
 	}
 	else if (event.type == sf::Event::JoystickMoved && (event.joystickMove.joystickId == m_player_1->hasJoystick() || event.joystickMove.joystickId == m_player_2->hasJoystick()))
 	{
-		if (event.joystickMove.axis == sf::Joystick::Axis::X)
+		if (event.joystickMove.axis == sf::Joystick::X)
 		{
 			if (event.joystickMove.position < -30)
 				event.joystickMove.joystickId == 0 ? m_player_1->setMovement(LEFT) : m_player_2->setMovement(LEFT);
