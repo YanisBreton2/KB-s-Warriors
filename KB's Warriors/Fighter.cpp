@@ -1,11 +1,14 @@
 #include "Fighter.h"
 
 
-Fighter::Fighter(int player): m_joystick(-1), m_moving(NONE), m_face_right(true)
+Fighter::Fighter(int player): m_joystick(-1), m_moving(NONE), m_face_right(true), m_state(STAND)
 {
 	m_texture.loadFromFile("../Ressources/Characters/az.png");
 	m_sprite.setTexture(m_texture);
-	m_sprite.setOrigin(m_texture.getSize().x / 2, m_texture.getSize().y);
+	m_texture_pos.height = HEIGHT;
+	m_texture_pos.width = WIDTH;
+	m_sprite.setTextureRect(m_texture_pos);
+	m_sprite.setOrigin(WIDTH / 2, HEIGHT);
 	if (player == 1)
 	{
 		m_sprite.setPosition(900, 800);
@@ -43,11 +46,44 @@ void		Fighter::move(float x, float y)
 
 void		Fighter::setMovement(int movement)
 {
-	m_moving = movement;
+	if (m_state == STAND)
+		m_moving = movement;
 }
 
-void		Fighter::doMovement(sf::View limit)
+void		Fighter::changeState(int state)
 {
+	if (m_state)
+		return ;
+	switch (state)
+	{
+	case LIGHT_ATTACK:
+		m_state = LIGHT_ATTACK;
+		m_anim_state = 0;
+		m_anim_clock.restart();
+		m_moving = NONE;
+		break;
+	}
+}
+
+void		Fighter::doAction(sf::View &limit)
+{
+	if (m_state == LIGHT_ATTACK && m_anim_clock.getElapsedTime().asMilliseconds() >= 100.0f)
+	{
+		m_anim_clock.restart();
+		m_anim_state += 1;
+		if (m_anim_state >= 9)
+		{
+			m_anim_state = 0;
+			m_state = 0;
+		}
+		m_texture_pos.left = WIDTH * m_anim_state;
+		m_sprite.setTextureRect(m_texture_pos);
+	}
+}
+
+void		Fighter::doMovement(sf::View &limit)
+{
+	doAction(limit);
 	if (m_moving)
 	{
 		float limit_left = limit.getCenter().x - limit.getSize().x / 2.0f;
