@@ -13,6 +13,8 @@
 # define STAND (0)
 # define LIGHT_ATTACK (1)
 
+# define ANIMATION_SPEED (100.0f)
+# define ANIMATION_KEY (9)
 # define SPEED ((float)1.0f)
 
 class Fighter

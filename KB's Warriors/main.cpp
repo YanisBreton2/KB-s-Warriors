@@ -1,5 +1,7 @@
 #include <iostream>
 #include <SFML\Graphics.hpp>
+#include <SFML\Main.hpp>
+
 #include "menu.h"
 
 int	main()
