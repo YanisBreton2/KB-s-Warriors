@@ -12,9 +12,11 @@
 
 # define STAND (0)
 # define LIGHT_ATTACK (1)
+# define STRONG_ATTACK (2)
 
-# define ANIMATION_SPEED (0.2f)
-# define ANIMATION_KEY (3)
+# define ANIMATION_SPEED (0.15f)
+# define LIGHT_ANIMATION_KEY (3)
+# define STRONG_ANIMATION_KEY (4)
 # define SPEED ((float)1.0f)
 # define JUMP_SPEED ((float)1.5f)
 
@@ -44,6 +46,7 @@ private:
 	bool		m_face_right;
 	int			m_state;
 	int			m_anim_state;
+	int			m_current_animation_keys;
 	sf::Clock	m_anim_clock;
 	float		m_vertical_speed;
 };

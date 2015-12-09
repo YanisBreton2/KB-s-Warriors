@@ -1,8 +1,7 @@
 #include "Fighter.h"
 
-Fighter::Fighter(int player): m_joystick(-1), m_moving(NONE), m_face_right(true), m_state(STAND), m_vertical_speed(0.0f)
+Fighter::Fighter(int player): m_joystick(-1), m_moving(NONE), m_face_right(true), m_state(STAND), m_vertical_speed(0.0f), m_current_animation_keys(0)
 {
-	m_vertical_speed = 0.0f;
 	m_texture.loadFromFile("../Ressources/Characters/az.png");
 	m_sprite.setTexture(m_texture);
 	m_texture_pos.height = HEIGHT;
@@ -58,24 +57,30 @@ void		Fighter::changeState(int state)
 	{
 	case LIGHT_ATTACK:
 		m_state = LIGHT_ATTACK;
-		m_anim_state = 0;
-		m_anim_clock.restart();
-		m_moving = NONE;
+		m_current_animation_keys = LIGHT_ANIMATION_KEY;
+		break;
+	case STRONG_ATTACK:
+		m_state = STRONG_ATTACK;
+		m_current_animation_keys = STRONG_ANIMATION_KEY;
 		break;
 	}
+	m_anim_state = 0;
+	m_anim_clock.restart();
+	m_moving = NONE;
 }
 
 void		Fighter::doAction(sf::View &limit)
 {
-	if (m_state == LIGHT_ATTACK && m_anim_clock.getElapsedTime().asSeconds() >= ANIMATION_SPEED)
+	if (m_state != STAND && m_anim_clock.getElapsedTime().asSeconds() >= ANIMATION_SPEED)
 	{
 		m_anim_clock.restart();
 		m_anim_state += 1;
-		if (m_anim_state >= ANIMATION_KEY )
+		if (m_anim_state >= m_current_animation_keys )
 		{
 			m_anim_state = 0;
-			m_state = 0;
+			m_state = STAND;
 		}
+		m_texture_pos.top = HEIGHT * (m_state > 0 ? m_state - 1 : 0);
 		m_texture_pos.left = WIDTH * m_anim_state;
 		m_sprite.setTextureRect(m_texture_pos);
 	}
