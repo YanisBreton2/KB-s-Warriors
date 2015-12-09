@@ -1,8 +1,8 @@
 #include "Fighter.h"
 
-
-Fighter::Fighter(int player): m_joystick(-1), m_moving(NONE), m_face_right(true), m_state(STAND)
+Fighter::Fighter(int player): m_joystick(-1), m_moving(NONE), m_face_right(true), m_state(STAND), m_vertical_speed(0.0f)
 {
+	m_vertical_speed = 0.0f;
 	m_texture.loadFromFile("../Ressources/Characters/az.png");
 	m_sprite.setTexture(m_texture);
 	m_texture_pos.height = HEIGHT;
@@ -71,7 +71,7 @@ void		Fighter::doAction(sf::View &limit)
 	{
 		m_anim_clock.restart();
 		m_anim_state += 1;
-		if (m_anim_state >= ANIMATION_KEY)
+		if (m_anim_state >= ANIMATION_KEY )
 		{
 			m_anim_state = 0;
 			m_state = 0;
@@ -84,6 +84,7 @@ void		Fighter::doAction(sf::View &limit)
 void		Fighter::doMovement(sf::View &limit)
 {
 	doAction(limit);
+	float	x_movement = 0.0f;
 	if (m_moving)
 	{
 		float limit_left = limit.getCenter().x - limit.getSize().x / 2.0f;
@@ -93,13 +94,22 @@ void		Fighter::doMovement(sf::View &limit)
 		if (m_moving == RIGHT)
 		{
 			if (sprite_right + SPEED < limit_right)
-				m_sprite.move(SPEED, 0);
+				x_movement = SPEED;
 		}
 		else if (m_moving == LEFT)
 		{
 			if (sprite_left - SPEED > limit_left)
-				m_sprite.move(-SPEED, 0);
+				x_movement = -SPEED;
 		}
+	}
+	m_sprite.move(x_movement, m_vertical_speed);
+	if (m_sprite.getPosition().y < limit.getSize().y)
+	{
+		m_vertical_speed += GRAVITY;
+	}
+	else if (m_vertical_speed)
+	{
+		m_vertical_speed = 0.0f;
 	}
 }
 
@@ -111,4 +121,10 @@ int		Fighter::hasJoystick(void)
 bool		Fighter::faceToRight(void)
 {
 	return (m_face_right);
+}
+
+void		Fighter::jump(void)
+{
+	if (m_vertical_speed > -0.00001f && m_vertical_speed < 0.00001f)
+		m_vertical_speed = -JUMP_SPEED;
 }

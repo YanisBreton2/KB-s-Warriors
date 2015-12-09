@@ -51,12 +51,16 @@ void		BattleEngine::event_handler(sf::Event event)
 			m_player_1->setMovement(LEFT);
 		else if (event.key.code == sf::Keyboard::G)
 			m_player_1->changeState(LIGHT_ATTACK);
+		else if (event.key.code == sf::Keyboard::F)
+			m_player_1->jump();
 		else if (event.key.code == sf::Keyboard::Right)
 			m_player_2->setMovement(RIGHT);
 		else if (event.key.code == sf::Keyboard::Left)
 			m_player_2->setMovement(LEFT);
 		else if (event.key.code == sf::Keyboard::K)
 			m_player_2->changeState(LIGHT_ATTACK);
+		else if (event.key.code == sf::Keyboard::J)
+			m_player_2->jump();
 	}
 	else if (event.type == sf::Event::KeyReleased)
 	{

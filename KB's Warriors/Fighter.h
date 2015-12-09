@@ -16,6 +16,9 @@
 # define ANIMATION_SPEED (100.0f)
 # define ANIMATION_KEY (9)
 # define SPEED ((float)1.0f)
+# define JUMP_SPEED ((float)1.5f)
+
+# define GRAVITY (0.005f)
 
 class Fighter
 {
@@ -31,6 +34,7 @@ public:
 	int			hasJoystick(void);
 	bool		faceToRight(void);
 	void		changeState(int state);
+	void		jump(void);
 private:
 	sf::Sprite	m_sprite;
 	sf::Texture	m_texture;
@@ -41,6 +45,7 @@ private:
 	int			m_state;
 	int			m_anim_state;
 	sf::Clock	m_anim_clock;
+	float		m_vertical_speed;
 };
 
 #endif /* !FIGHTER_H_ */
