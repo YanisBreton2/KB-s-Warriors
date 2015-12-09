@@ -67,7 +67,7 @@ void		Fighter::changeState(int state)
 
 void		Fighter::doAction(sf::View &limit)
 {
-	if (m_state == LIGHT_ATTACK && m_anim_clock.getElapsedTime().asMilliseconds() >= ANIMATION_SPEED)
+	if (m_state == LIGHT_ATTACK && m_anim_clock.getElapsedTime().asSeconds() >= ANIMATION_SPEED)
 	{
 		m_anim_clock.restart();
 		m_anim_state += 1;
