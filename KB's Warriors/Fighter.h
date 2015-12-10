@@ -2,6 +2,7 @@
 # define FIGHTER_H_
 
 # include <SFML\Graphics.hpp>
+# include "Key.h"
 
 # define HEIGHT (421)
 # define WIDTH (206)
@@ -37,6 +38,8 @@ public:
 	bool		faceToRight(void);
 	void		changeState(int state);
 	void		jump(void);
+	void		buttonPressed(int button);
+	void		checkAttack(void);
 private:
 	sf::Sprite	m_sprite;
 	sf::Texture	m_texture;
@@ -49,6 +52,7 @@ private:
 	int			m_current_animation_keys;
 	sf::Clock	m_anim_clock;
 	float		m_vertical_speed;
+	bool		m_button_press[COUNT_BUTTON];
 };
 
 #endif /* !FIGHTER_H_ */

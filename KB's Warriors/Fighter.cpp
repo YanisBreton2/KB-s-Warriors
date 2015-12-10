@@ -2,6 +2,8 @@
 
 Fighter::Fighter(int player): m_joystick(-1), m_moving(NONE), m_face_right(true), m_state(STAND), m_vertical_speed(0.0f), m_current_animation_keys(0)
 {
+	for (int i = 0; i < COUNT_BUTTON; i++)
+		m_button_press[i] = false;
 	m_texture.loadFromFile("../Ressources/Characters/az.png");
 	m_sprite.setTexture(m_texture);
 	m_texture_pos.height = HEIGHT;
@@ -86,8 +88,21 @@ void		Fighter::doAction(sf::View &limit)
 	}
 }
 
+void		Fighter::checkAttack()
+{
+	if (m_button_press[LIGHT_BUTTON])
+		changeState(LIGHT_ATTACK);
+	else if (m_button_press[STRONG_BUTTON])
+		changeState(STRONG_ATTACK);
+	else if (m_button_press[JUMP_BUTTON])
+		jump();
+	for (int i = 0; i < COUNT_BUTTON; i++)
+		m_button_press[i] = false;
+}
+
 void		Fighter::doMovement(sf::View &limit)
 {
+	checkAttack();
 	doAction(limit);
 	float	x_movement = 0.0f;
 	if (m_moving)
@@ -132,4 +147,9 @@ void		Fighter::jump(void)
 {
 	if (m_vertical_speed > -0.00001f && m_vertical_speed < 0.00001f)
 		m_vertical_speed = -JUMP_SPEED;
+}
+
+void		Fighter::buttonPressed(int button)
+{
+	m_button_press[button] = true;
 }

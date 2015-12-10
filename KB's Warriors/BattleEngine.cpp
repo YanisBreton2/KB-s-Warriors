@@ -49,29 +49,29 @@ void		BattleEngine::event_handler(sf::Event event)
 			m_player_1->setMovement(RIGHT);
 		else if (event.key.code == sf::Keyboard::Q)
 			m_player_1->setMovement(LEFT);
-		else if (event.key.code == sf::Keyboard::G)
-			m_player_1->changeState(LIGHT_ATTACK);
-		else if (event.key.code == sf::Keyboard::H)
-			m_player_1->changeState(STRONG_ATTACK);
-		else if (event.key.code == sf::Keyboard::F)
-			m_player_1->jump();
 		else if (event.key.code == sf::Keyboard::Right)
 			m_player_2->setMovement(RIGHT);
 		else if (event.key.code == sf::Keyboard::Left)
 			m_player_2->setMovement(LEFT);
-		else if (event.key.code == sf::Keyboard::K)
-			m_player_2->changeState(LIGHT_ATTACK);
-		else if (event.key.code == sf::Keyboard::L)
-			m_player_2->changeState(STRONG_ATTACK);
-		else if (event.key.code == sf::Keyboard::J)
-			m_player_2->jump();
 	}
 	else if (event.type == sf::Event::KeyReleased)
 	{
 		if (event.key.code == sf::Keyboard::D || event.key.code == sf::Keyboard::Q)
 			m_player_1->setMovement(NONE);
+		else if (event.key.code == sf::Keyboard::G)
+			m_player_1->buttonPressed(LIGHT_BUTTON);
+		else if (event.key.code == sf::Keyboard::H)
+			m_player_1->buttonPressed(STRONG_BUTTON);
+		else if (event.key.code == sf::Keyboard::F)
+			m_player_1->buttonPressed(JUMP_BUTTON);
 		else if (event.key.code == sf::Keyboard::Right || event.key.code == sf::Keyboard::Left)
 			m_player_2->setMovement(NONE);
+		else if (event.key.code == sf::Keyboard::K)
+			m_player_2->buttonPressed(LIGHT_BUTTON);
+		else if (event.key.code == sf::Keyboard::L)
+			m_player_2->buttonPressed(STRONG_BUTTON);
+		else if (event.key.code == sf::Keyboard::J)
+			m_player_2->buttonPressed(JUMP_BUTTON);
 	}
 	else if (event.type == sf::Event::JoystickMoved && (event.joystickMove.joystickId == m_player_1->hasJoystick() || event.joystickMove.joystickId == m_player_2->hasJoystick()))
 	{
